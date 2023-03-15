@@ -1,0 +1,53 @@
+<div class="register-container">
+    <mat-card>
+        <mat-card-content>
+            <h2>User Registration</h2>
+            <form (ngSubmit)="register()" [formGroup]="user">
+                <div class="container">
+                    <!-- profile picture -->
+                    <mat-form-field>
+                        <mat-label>Profile picture</mat-label>
+                        <input matInput type="url" name="profile picture" formControlName="profilePicture" [ngClass]="invalidInput('profilePicture')" />
+                    </mat-form-field>
+                    <!-- username -->
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput type="text" name="username" formControlName="username" [ngClass]="invalidInput('username')" />
+                    </mat-form-field>
+                    <!-- email -->
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" name="email" formControlName="email" [ngClass]="invalidInput('email')" />
+                    </mat-form-field>
+                    <!-- phone nummber -->
+                    <mat-form-field>
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput type="tel" name="phone number" formControlName="phoneNumber" [ngClass]="invalidInput('phoneNumber')" />
+                        <mat-error *ngIf="user.get('phoneNumber')?.errors?.['required']">
+                            Please enter phone number.
+                        </mat-error>
+                        <mat-error *ngIf="user.get('phoneNumber')?.errors?.['number']">
+                            Please enter numbers only.
+                        </mat-error>
+                        <mat-error *ngIf="user.get('phoneNumber')?.errors?.['minlength']">
+                            Please enter min 10 number.
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- password -->
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" name="password" formControlName="password" [ngClass]="invalidInput('password')" />
+                    </mat-form-field>
+                    <!-- confirm password -->
+                    <mat-form-field>
+                        <mat-label>Confirm Paswword</mat-label>
+                        <input matInput type="password" name="confirm password" formControlName="confirmPassword" [ngClass]="invalidInput('confirmPassword')" />
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" [disabled]="!user.valid">
+          Register
+        </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

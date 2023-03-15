@@ -1,0 +1,23 @@
+mat-card {
+    max-width: 700px;
+    margin: 5em auto;
+    text-align: center;
+}
+
+mat-form-field {
+    margin: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 340px 340px;
+    grid-template-rows: 100px 100px;
+    column-gap: 15px;
+    align-items: center;
+}
+
+button {
+    width: 680px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
