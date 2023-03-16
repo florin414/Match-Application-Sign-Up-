@@ -29,34 +29,32 @@ export class RegisterComponent implements OnInit {
     const user = {
       profilePicture: new FormControl('', [
         Validators.required,
-        this.userValidatorService.imageUrlValidator,
+        this.userValidatorService.imageUrlValidator(),
       ]),
       username: new FormControl('', [
         Validators.required,
-        Validators.minLength(10),
-        this.userValidatorService.numberAndAlphabetValidator,
+        Validators.minLength(5),
+        this.userValidatorService.numberAndAlphabetValidator(),
       ]),
       email: new FormControl('', [
         Validators.required,
-        Validators.email,
-        this.userValidatorService.emailValidator,
+        this.userValidatorService.emailValidator(),
       ]),
       phoneNumber: new FormControl('', [
         Validators.required,
-        Validators.minLength(10),
-        this.userValidatorService.numberValidator,
+        Validators.maxLength(13),
+        this.userValidatorService.phoneNumberValidator(),
       ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(10),
-        this.userValidatorService.forbiddenPasswordValidator,
-        this.userValidatorService.createPasswordStrengthValidator
+        this.userValidatorService.forbiddenPasswordValidator(),
+        this.userValidatorService.createPasswordStrengthValidator(),
+        this.userValidatorService.matchValidator('confirmPassword', true)
       ]),
       confirmPassword: new FormControl('', [
         Validators.required,
-        Validators.minLength(10),
-        this.userValidatorService.forbiddenPasswordValidator,
-        this.userValidatorService.createPasswordStrengthValidator
+        this.userValidatorService.matchValidator('password')
       ]),
     };
     return user;

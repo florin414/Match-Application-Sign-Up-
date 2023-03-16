@@ -16,11 +16,11 @@ export class UserSessionService {
   constructor() {}
 
   public registerUser(user: User): void {
-    let index = 0; 
-    for(const item in user){
-      sessionStorage.setItem(this.userInformation[index], String(item));
-      index++;
-    }
+    sessionStorage.setItem('profilePicture', user.profilePicture);
+    sessionStorage.setItem('username', user.username);
+    sessionStorage.setItem('email', user.email);
+    sessionStorage.setItem('phoneNumber', String(user.phoneNumber));
+    sessionStorage.setItem('password', user.password);
     sessionStorage.setItem('registered', user.email);
   }
 
@@ -30,10 +30,10 @@ export class UserSessionService {
 
   public loginUser(email: string, password: string): void {
     if (
-      email === sessionStorage.getItem(email) &&
-      password === sessionStorage.getItem(password)
+      email === sessionStorage.getItem('email') &&
+      password === sessionStorage.getItem('password')
     ) {
-      sessionStorage.setItem('logged', 'username');
+      sessionStorage.setItem('logged', email);
     }
   }
 

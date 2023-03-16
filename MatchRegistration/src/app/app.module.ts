@@ -10,7 +10,6 @@ import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { UserValidationErrorsService } from './services/user-validation-errors.service';
 import { UserValidatorService } from './services/user-validator.service';
 import { LoginComponent } from './user/login/login.component';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { RegisterComponent } from './user/register/register.component';
 import { UserSessionService } from './services/user-session.service';
 
@@ -19,8 +18,7 @@ import { UserSessionService } from './services/user-session.service';
     NavBarComponent,
     AppComponent,
     LoginComponent,
-    UserProfileComponent,
-    RegisterComponent
+     RegisterComponent
   ],
   imports: [
     BrowserModule,

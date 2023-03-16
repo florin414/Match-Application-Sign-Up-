@@ -2,10 +2,4 @@
     <span>
     <button mat-button routerLink="/">{{title}}</button>
   </span>
-    <div class="login-logout-btn" fxLayout="row" fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="/login" *ngIf="isAuthenticated" (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
-      Logout
-    </button>
-    </div>
 </mat-toolbar>

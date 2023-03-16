@@ -1,26 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserValidationErrorsService {
-  /*
-  - primul caracter sa fie cifra sau "+"(plus)
-- ultimul caracter sa fie cifra si nimic altceva
-- intre primul si ultimul caracter sa fie cifre, "."(punct), " "(spatiu)
-Adica sa accepte formatele urmatoare:
-+40 740 025 585
-0740.025.585
-0740 025 585
-0740025585
-   */
-  public validateNumber(value: any): ValidationErrors | null {
+  public validatePhoneNumber(value: any): ValidationErrors | null {
     const regexPatternForNumbers: string = '^[0-9+]{1}[0-9. ]*[0-9]{1}$';
 
     const regex = new RegExp(regexPatternForNumbers);
 
-    return !regex.test(value) ? { number: true } : null;
+    return !regex.test(value) ? { phoneNumber: true } : null;
   }
 
   public validateNumberAndAlphabet(value: any): ValidationErrors | null {
@@ -41,11 +31,11 @@ Adica sa accepte formatele urmatoare:
   }
 
   public validateEmail(value: any): ValidationErrors | null {
-    const regexPatternEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/;
+    const regexPatternEmail = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi;
 
     const regex = new RegExp(regexPatternEmail);
 
-    return !regex.test(value) ? { email: true } : null;
+    return !regex.test(value) ? { emailAddress: true } : null;
   }
 
   public forbiddenPassword(value: any): ValidationErrors | null {

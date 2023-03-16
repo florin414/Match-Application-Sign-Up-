@@ -9,8 +9,7 @@ export class RegisteredCheckGuard implements CanActivate {
   constructor(private userSessionService: UserSessionService) {}
 
   canActivate(): boolean {
-    // return this.userSessionService.isRegistered();
-    return true;
+    return this.userSessionService.isRegistered();
   }
-  
+
 }

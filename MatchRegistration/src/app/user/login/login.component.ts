@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserSessionService } from 'src/app/services/user-session.service';
 
 @Component({
@@ -13,8 +12,7 @@ export class LoginComponent implements OnInit {
   public password: string = '';
 
   constructor(
-    private userSessionService: UserSessionService,
-    private router: Router
+    private userSessionService: UserSessionService
   ) {}
 
   ngOnInit(): void {
@@ -22,7 +20,12 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-    this.userSessionService.loginUser('email', 'password');
-    this.router.navigate(['/profile-user']);
+    this.userSessionService.loginUser(this.email, this.password);
+    if(this.userSessionService.isLogged()){
+      alert('logged succes');
+    }
+    else{
+      alert('invalid input');
+    }
   }
 }
